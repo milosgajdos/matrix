@@ -37,7 +37,7 @@ func TestNewRandDense(t *testing.T) {
 	// create new matrix
 	rows, cols := 2, 3
 	min, max := 1.0, 2.0
-	randMx, err := NewRandDense(rows, cols, min, max)
+	randMx, err := NewDenseRand(rows, cols, min, max)
 	assert.NotNil(randMx)
 	assert.NoError(err)
 	r, c := randMx.Dims()
@@ -50,12 +50,12 @@ func TestNewRandDense(t *testing.T) {
 	}
 
 	// Can't create new matrix
-	randMx, err = NewRandDense(rows, -6, min, max)
+	randMx, err = NewDenseRand(rows, -6, min, max)
 	assert.Nil(randMx)
 	assert.Error(err)
 
 	// Can't create new matrix
-	randMx, err = NewRandDense(-10, cols, min, max)
+	randMx, err = NewDenseRand(-10, cols, min, max)
 	assert.Nil(randMx)
 	assert.Error(err)
 }
@@ -66,17 +66,17 @@ func TestNewConstDense(t *testing.T) {
 	// all elements must be equal to 1.0
 	constVec := []float64{1.0, 1.0, 1.0, 1.0}
 	constMx := mat.NewDense(2, 2, constVec)
-	mx, err := NewConstDense(2, 2, 1.0)
+	mx, err := NewDenseVal(2, 2, 1.0)
 	assert.NotNil(mx)
 	assert.True(mat.Equal(constMx, mx))
 
 	// Can't create new matrix
-	constMx, err = NewConstDense(3, -6, 1.0)
+	constMx, err = NewDenseVal(3, -6, 1.0)
 	assert.Nil(constMx)
 	assert.Error(err)
 
 	// Can't create new matrix
-	constMx, err = NewConstDense(-3, 10, 1.0)
+	constMx, err = NewDenseVal(-3, 10, 1.0)
 	assert.Nil(constMx)
 	assert.Error(err)
 }
@@ -86,12 +86,12 @@ func TestNewConstEyeDense(t *testing.T) {
 
 	data := []float64{1.0, 0.0, 0.0, 1.0}
 	exp := mat.NewDense(2, 2, data)
-	m, err := NewConstEyeDense(2, 1.0)
+	m, err := NewDenseValIdentity(2, 1.0)
 	assert.NotNil(m)
 	assert.True(mat.Equal(m, exp))
 
 	// Can't create new matrix
-	m, err = NewConstEyeDense(-6, 1.0)
+	m, err = NewDenseValIdentity(-6, 1.0)
 	assert.Nil(m)
 	assert.Error(err)
 }
@@ -104,13 +104,13 @@ func TestAddConst(t *testing.T) {
 	mx := mat.NewDense(2, 2, []float64{1.0, 2.0, 2.5, 2.5})
 	mc := mat.NewDense(2, 2, []float64{1.5, 2.5, 3.0, 3.0})
 
-	mx, err := AddConst(val, mx)
+	mx, err := AddVal(mx, val)
 	assert.NotNil(mx)
 	assert.NoError(err)
 	assert.True(mat.EqualApprox(mx, mc, 0.01))
 
 	// incorrect matrix passed in
-	mx, err = AddConst(val, nil)
+	mx, err = AddVal(nil, val)
 	assert.Nil(mx)
 	assert.Error(err)
 }

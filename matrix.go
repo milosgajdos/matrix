@@ -16,10 +16,10 @@ func Format(m mat.Matrix) fmt.Formatter {
 	return mat.Formatted(m, mat.Prefix(""), mat.Squeeze())
 }
 
-// NewRandDense creates a new matrix with provided number of rows and columns
+// NewDenseRand creates a new matrix with provided number of rows and columns
 // which is initialized to random numbers uniformly distributed in interval [min, max].
-// NewRandDense fails if non-positive matrix dimensions are requested.
-func NewRandDense(rows, cols int, min, max float64) (*mat.Dense, error) {
+// NewDenseRand fails if non-positive matrix dimensions are requested.
+func NewDenseRand(rows, cols int, min, max float64) (*mat.Dense, error) {
 	return withValidDims(rows, cols, func() (*mat.Dense, error) {
 		// set random seed
 		rand.Seed(55)
@@ -33,9 +33,9 @@ func NewRandDense(rows, cols int, min, max float64) (*mat.Dense, error) {
 	})
 }
 
-// NewConstDense returns a matrix with rows x cols whose each element is set to val.
-// NewConstDense fails if invalid matrix dimensions are requested.
-func NewConstDense(rows, cols int, val float64) (*mat.Dense, error) {
+// NewDenseVal returns a matrix with rows x cols whose each element is set to val.
+// NewDenseVal fails if invalid matrix dimensions are requested.
+func NewDenseVal(rows, cols int, val float64) (*mat.Dense, error) {
 	return withValidDims(rows, cols, func() (*mat.Dense, error) {
 		// allocate zero matrix and set every element to val
 		constMx := mat.NewDense(rows, cols, nil)
@@ -48,9 +48,9 @@ func NewConstDense(rows, cols int, val float64) (*mat.Dense, error) {
 	})
 }
 
-// NewConstEyeDense returns a matrix with size n x n whose diagonal elements are set to val.
-// NewConstEyeDense fails if invalid matrix dimensions are requested.
-func NewConstEyeDense(n int, val float64) (*mat.Dense, error) {
+// NewDenseValIdentity returns a matrix with size n x n whose diagonal elements are set to val.
+// NewDenseValIdentity fails if invalid matrix dimensions are requested.
+func NewDenseValIdentity(n int, val float64) (*mat.Dense, error) {
 	return withValidDims(n, n, func() (*mat.Dense, error) {
 		data := make([]float64, n)
 		for i := range data {
@@ -65,10 +65,10 @@ func NewConstEyeDense(n int, val float64) (*mat.Dense, error) {
 	})
 }
 
-// AddConst adds a constant value to every element of matrix
+// AddVal adds a constant value to every element of matrix
 // It modifies the matrix m passed in as a paramter.
 // AddConstant fails with error if empty matrix is supplied
-func AddConst(val float64, m *mat.Dense) (*mat.Dense, error) {
+func AddVal(m *mat.Dense, val float64) (*mat.Dense, error) {
 	if m == nil {
 		return nil, fmt.Errorf("invalid matrix supplied: %v", m)
 	}
