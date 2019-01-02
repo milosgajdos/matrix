@@ -6,7 +6,7 @@
 [![Go Report Card](https://goreportcard.com/badge/milosgajdos83/matrix)](https://goreportcard.com/report/github.com/milosgajdos83/matrix)
 [![codecov](https://codecov.io/gh/milosgajdos83/gosom/branch/master/graph/badge.svg)](https://codecov.io/gh/milosgajdos83/matrix)
 
-This Go package contains various function useful when working with [gonum](https://www.gonum.org) matrices which are not provided in `gonum` [mat](https://godoc.org/gonum.org/v1/gonum/mat) package.
+This Go package contains various function useful when working with [gonum](https://www.gonum.org) matrices which are not provided by `gonum` [mat](https://godoc.org/gonum.org/v1/gonum/mat) package.
 
 # Get started
 
