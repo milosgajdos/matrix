@@ -199,7 +199,7 @@ func TestRowsColsMin(t *testing.T) {
 	assert.EqualError(err, fmt.Sprintf(errInvMx, mx))
 }
 
-func TestRowColSums(t *testing.T) {
+func TestRowsColsSums(t *testing.T) {
 	assert := assert.New(t)
 
 	data := []float64{1.2, 3.4, 4.5, 6.7, 8.9, 10.0}
@@ -224,20 +224,28 @@ func TestRowColSums(t *testing.T) {
 	assert.InDeltaSlice(colSums, resCols, delta)
 }
 
-func TestColsMean(t *testing.T) {
+func TestRowsColsMean(t *testing.T) {
 	assert := assert.New(t)
 
 	data := []float64{1.2, 3.4, 4.5, 6.7, 8.9, 10.0}
 	mx := mat.NewDense(3, 2, data)
 	assert.NotNil(mx)
 	colsMean := []float64{4.8667, 6.7000}
+	rowsMean := []float64{2.3, 5.6, 9.45}
+
+	rows, cols := mx.Dims()
 
 	// check cols
-	_, cols := mx.Dims()
 	me, err := ColsMean(cols, mx)
 	assert.NotNil(me)
 	assert.NoError(err)
 	assert.True(floats.EqualApprox(colsMean, me, 0.01))
+
+	// check rows
+	me, err = RowsMean(rows, mx)
+	assert.NotNil(me)
+	assert.NoError(err)
+	assert.True(floats.EqualApprox(rowsMean, me, 0.01))
 }
 
 func TestColsStdev(t *testing.T) {
