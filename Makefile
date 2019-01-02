@@ -1,6 +1,7 @@
 BUILD=go build
 CLEAN=go clean
 PACKAGES=$(shell go list ./... | grep -v /examples/)
+GO111MODULE=on
 
 all: dep check test
 
@@ -11,7 +12,7 @@ godep:
 	wget -O- https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 
 dep:
-	dep ensure -v
+	go mod vendor || dep ensure -v
 
 check:
 	for pkg in ${PACKAGES}; do \
