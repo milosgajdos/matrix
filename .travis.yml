@@ -4,14 +4,9 @@ go:
   - "1.10"
   - "1.11"
 
-before_install:
-  - go get github.com/golang/lint/golint
-
 before_script:
+  - go get github.com/golang/lint/golint
   - wget -O- https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-
-install:
-  - make dep && go build -v ./...
 
 script:
   - make all
