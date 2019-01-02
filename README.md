@@ -15,6 +15,11 @@ Get the package:
 $ go get -u github.com/milosgajdos83/matrix
 ```
 
+Get dependencies:
+```
+$ make godep && make dep
+```
+
 Run the tests:
 ```
 $ make test
