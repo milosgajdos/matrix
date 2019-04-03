@@ -310,8 +310,8 @@ func BlockSymDiag(mx []mat.Symmetric) *mat.SymDense {
 			continue
 		}
 		r := m.Symmetric()
-		m = m.GrowSquare(n).(*mat.SymDense)
-		m.SliceSquare(r, r+n).(*mat.SymDense).CopySym(mx[i])
+		m = m.GrowSym(n).(*mat.SymDense)
+		m.SliceSym(r, r+n).(*mat.SymDense).CopySym(mx[i])
 	}
 
 	return m
