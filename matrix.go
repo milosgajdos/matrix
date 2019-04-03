@@ -229,22 +229,22 @@ func Cov(m *mat.Dense, dim string) (*mat.SymDense, error) {
 	// calculate mean data vector across dimension dim
 	var mean []float64
 	var count float64
-	if strings.EqualFold(dim, "rows") {
+	if strings.EqualFold(dim, "cols") {
 		mean, _ = RowsMean(rows, m)
-		count = float64(rows)
+		count = float64(cols)
 	} else {
 		mean, _ = ColsMean(cols, m)
-		count = float64(cols)
+		count = float64(rows)
 	}
 
 	// x is zero-mean matrix with data stored in dimension dim
 	x := mat.NewDense(rows, cols, nil)
 	for r := 0; r < rows; r++ {
 		for c := 0; c < cols; c++ {
-			if strings.EqualFold(dim, "rows") {
-				x.Set(r, c, m.At(r, c)-mean[c])
-			} else {
+			if strings.EqualFold(dim, "cols") {
 				x.Set(r, c, m.At(r, c)-mean[r])
+			} else {
+				x.Set(r, c, m.At(r, c)-mean[c])
 			}
 		}
 	}
