@@ -18,25 +18,28 @@
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:18752d0b95816a1b777505a97f71c7467a8445b8ffb55631a7bf779f6ba4fa83"
+  digest = "1:972c2427413d41a1e06ca4897e8528e5a1622894050e2f527b38ddf0f343f759"
   name = "github.com/stretchr/testify"
   packages = ["assert"]
   pruneopts = "UT"
-  revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
-  version = "v1.2.2"
+  revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
+  version = "v1.3.0"
 
 [[projects]]
   branch = "master"
-  digest = "1:d8f15f0e3d81a1ff3d434c3a3206e4dadbd3309ba22c29dc4f98d4a3d20b81d9"
+  digest = "1:ae5441e8aa76cc5571230f4b218d62baa144de471c53ee28648d0acc1405c21f"
   name = "gonum.org/v1/gonum"
   packages = [
     "blas",
     "blas/blas64",
+    "blas/cblas128",
     "blas/gonum",
     "floats",
     "internal/asm/c128",
+    "internal/asm/c64",
     "internal/asm/f32",
     "internal/asm/f64",
+    "internal/cmplx64",
     "internal/math32",
     "lapack",
     "lapack/gonum",
@@ -45,7 +48,7 @@
     "stat",
   ]
   pruneopts = "UT"
-  revision = "16380329fcd8f07227b82c1c92cadea7a1bef000"
+  revision = "169ee079a3fcd6706a67702cf202192814167c28"
 
 [solve-meta]
   analyzer-name = "dep"
