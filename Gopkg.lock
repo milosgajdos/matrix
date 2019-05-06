@@ -27,7 +27,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:ae5441e8aa76cc5571230f4b218d62baa144de471c53ee28648d0acc1405c21f"
+  digest = "1:aaeb761e3991f1f6370ad03854e5ca55d07768d4b6c5f4cf8b4f2c8f906c5396"
   name = "gonum.org/v1/gonum"
   packages = [
     "blas",
@@ -48,7 +48,7 @@
     "stat",
   ]
   pruneopts = "UT"
-  revision = "169ee079a3fcd6706a67702cf202192814167c28"
+  revision = "4a2eb0188cbc0e070b369cf7197a3ecb1034fb46"
 
 [solve-meta]
   analyzer-name = "dep"
