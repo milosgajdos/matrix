@@ -1,5 +1,6 @@
 BUILD=go build
 CLEAN=go clean
+GO111MODULE=on
 PACKAGES=$(shell go list ./... | grep -v /examples/)
 
 all: dep check test
