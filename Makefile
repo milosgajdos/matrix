@@ -7,18 +7,8 @@ all: dep check test
 clean:
 	go clean
 
-godep:
-ifneq ($(GO111MODULE),"on")
-	echo "Installing Go dep resolver"
-	wget -O- https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-endif
-
 dep:
-ifeq ($(GO111MODULE),"on")
-	go mod vendor
-else
-	dep ensure -v
-endif
+	go get
 
 check:
 	for pkg in ${PACKAGES}; do \

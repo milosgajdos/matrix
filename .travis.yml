@@ -1,14 +1,7 @@
 language: go
 go:
-  - "1.10"
-  - "1.11"
-
-before_script:
-  - go get github.com/golang/lint/golint
-  - wget -O- https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+  - "1.12"
+  - "1.13"
 
 script:
   - make all
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
