@@ -14,7 +14,6 @@ dep:
 check:
 	for pkg in ${PACKAGES}; do \
 		go vet $$pkg || exit ; \
-		golint $$pkg || exit ; \
 	done
 
 test:
