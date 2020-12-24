@@ -59,7 +59,7 @@ func NewDenseValIdentity(n int, val float64) (*mat.Dense, error) {
 		diag := mat.NewDiagDense(n, data)
 
 		m := &mat.Dense{}
-		m.Clone(diag)
+		m.CloneFrom(diag)
 
 		return m, nil
 	})

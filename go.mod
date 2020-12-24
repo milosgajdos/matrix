@@ -1,8 +1,8 @@
 module github.com/milosgajdos/matrix
 
-require (
-	github.com/stretchr/testify v1.3.0
-	gonum.org/v1/gonum v0.0.0-20190502212712-4a2eb0188cbc
-)
+go 1.14
 
-go 1.13
+require (
+	github.com/stretchr/testify v1.6.1
+	gonum.org/v1/gonum v0.8.2
+)
