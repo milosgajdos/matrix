@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"strings"
 
-	"gonum.org/v1/gonum/floats"
+	"gonum.org/v1/gonum/floats/scalar"
 	"gonum.org/v1/gonum/mat"
 	"gonum.org/v1/gonum/stat"
 )
@@ -269,7 +269,7 @@ func ToSymDense(m *mat.Dense) (*mat.SymDense, error) {
 	idx := 0
 	for i := 0; i < r; i++ {
 		for j := 0; j < c; j++ {
-			if i != j && !floats.EqualWithinAbsOrRel(mT.At(i, j), m.At(i, j), 1e-6, 1e-2) {
+			if i != j && !scalar.EqualWithinAbsOrRel(mT.At(i, j), m.At(i, j), 1e-6, 1e-2) {
 				return nil, fmt.Errorf("Matrix not symmetric (%d, %d): %.40f != %.40f\n%v",
 					i, j, mT.At(i, j), m.At(i, j), Format(m))
 			}
