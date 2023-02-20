@@ -305,11 +305,11 @@ func BlockSymDiag(mx []mat.Symmetric) *mat.SymDense {
 	m := &mat.SymDense{}
 
 	for i := range mx {
-		n := mx[i].Symmetric()
+		n := mx[i].SymmetricDim()
 		if n == 0 {
 			continue
 		}
-		r := m.Symmetric()
+		r := m.SymmetricDim()
 		m = m.GrowSym(n).(*mat.SymDense)
 		m.SliceSym(r, r+n).(*mat.SymDense).CopySym(mx[i])
 	}
