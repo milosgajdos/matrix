@@ -361,7 +361,7 @@ func TestBlockSymDiag(t *testing.T) {
 
 	m := BlockSymDiag(mx)
 
-	n := m.Symmetric()
+	n := m.SymmetricDim()
 	for i := 0; i < n; i++ {
 		for j := i; j < n; j++ {
 			assert.InDelta(exp.At(i, j), m.At(i, j), 0.001)
